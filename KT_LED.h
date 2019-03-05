@@ -22,7 +22,7 @@ class KT_LED{
     // library-accessible "private" interface
     private:
         int _pinValue;
-        int _lastTime;
+        unsigned long _lastTime;
         bool _ledState;
 
 };
