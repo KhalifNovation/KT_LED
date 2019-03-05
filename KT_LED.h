@@ -17,10 +17,13 @@ class KT_LED{
         KT_LED(uint8_t pin);
         void ON(void);
         void OFF(void);
+        void Blink(int);
 
     // library-accessible "private" interface
     private:
         int _pinValue;
+        int _lastTime;
+        bool _ledState;
 
 };
 
