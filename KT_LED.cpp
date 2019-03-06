@@ -1,3 +1,14 @@
+/*
+ * TO DO
+ *
+ * FadeOn - transition from off to max brightness
+ * FadeOff - transition from max brightness to off
+ * Breathe - like blink, but use pwm to make the effect of breathing
+ * LowActive - invert on and off
+ * Blink - change to add off and on duration parameter
+ * add support for RGB LED
+ */
+
 #include "KT_LED.h"
 
 // Constructor
