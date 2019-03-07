@@ -28,7 +28,7 @@ void KT_LED::begin(bool state) {
 }
 
 // Turn on led
-void KT_LED::ON(void){
+void KT_LED::on(void){
 
     // change the state then turn on led
     _ledState = true;
@@ -37,7 +37,7 @@ void KT_LED::ON(void){
 }
 
 // Turn off led
-void KT_LED::OFF(void){
+void KT_LED::off(void){
 
     //change the state then turn off led
     _ledState = false;
@@ -46,7 +46,7 @@ void KT_LED::OFF(void){
 
 // Led blinking (without delay)
 // This function need to be call frequently
-void KT_LED::Blink(int delayTime){
+void KT_LED::blink(int delayTime){
 
     // get current time
     unsigned long currentTime = millis();

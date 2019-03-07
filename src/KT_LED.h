@@ -16,9 +16,9 @@ class KT_LED{
     public:
         KT_LED(uint8_t pin);
 		void begin(bool state);
-        void ON(void);
-        void OFF(void);
-        void Blink(int);
+        void on(void);
+        void off(void);
+        void blink(int);
 
     // library-accessible "private" interface
     private:
