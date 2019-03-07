@@ -12,8 +12,8 @@
 #include "KT_LED.h"
 
 // Constructor for single led
-KT_LED::KT_LED(uint8_t pinValue){
-
+KT_LED::KT_LED(uint8_t pinValue, MODE_LED mode){
+	_mode = mode;
     _pinValue = pinValue;   // init pin use for led
     _ledState = false;      // keep track of state
 
@@ -30,18 +30,23 @@ void KT_LED::begin(bool state) {
 // Turn on led
 void KT_LED::on(void){
 
-    // change the state then turn on led
-    _ledState = true;
-    digitalWrite(_pinValue,_ledState);
+	//set pin HIGH, if Active High Mode
+	if (_mode == ACTIVE_HIGH_MODE)
+		digitalWrite(_pinValue, HIGH);
+	else
+		digitalWrite(_pinValue, LOW);
 
 }
 
 // Turn off led
 void KT_LED::off(void){
 
-    //change the state then turn off led
-    _ledState = false;
-    digitalWrite(_pinValue,_ledState);
+    //set pin LOW, if Active High Mode
+	if (_mode == ACTIVE_HIGH_MODE)
+		digitalWrite(_pinValue, LOW);
+	else
+		digitalWrite(_pinValue, HIGH);
+
 }
 
 // Led blinking (without delay)

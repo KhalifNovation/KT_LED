@@ -10,11 +10,17 @@
 
 #include <Arduino.h>
 
+enum MODE_LED
+{
+	ACTIVE_HIGH_MODE,
+	ACTIVE_LOW_MODE
+};
+
 class KT_LED{
 
     // user-accessible "public" interface
     public:
-        KT_LED(uint8_t pin);
+        KT_LED(uint8_t pin, MODE_LED mode);
 		void begin(bool state);
         void on(void);
         void off(void);
@@ -22,6 +28,7 @@ class KT_LED{
 
     // library-accessible "private" interface
     private:
+		MODE_LED _mode;
         int _pinValue;
         unsigned long _lastTime;
         bool _ledState;
