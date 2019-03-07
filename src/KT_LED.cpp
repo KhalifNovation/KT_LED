@@ -49,8 +49,7 @@ void KT_LED::off(void){
 
 }
 
-// Led blinking (without delay)
-// This function need to be call frequently
+// single Led blinking (without delay), This function need to be call frequently
 void KT_LED::blink(int delayTime){
 
     // get current time
