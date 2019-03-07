@@ -8,7 +8,11 @@
 #ifndef KT_LED_h
 #define KT_LED_h
 
-#include <Arduino.h>
+	#if defined(ARDUINO) && ARDUINO >= 100
+		#include "arduino.h"
+	#else
+		#include "WProgram.h"
+	#endif
 
 enum MODE_LED
 {
@@ -21,7 +25,8 @@ class KT_LED{
     // user-accessible "public" interface
     public:
         KT_LED(uint8_t pin, MODE_LED mode);
-		void begin(bool state);
+		void begin(bool ledState);
+		void state(bool ledState);
         void on(void);
         void off(void);
         void blink(int);
