@@ -11,17 +11,20 @@
 
 #include "KT_LED.h"
 
-// Constructor
+// Constructor for single led
 KT_LED::KT_LED(uint8_t pinValue){
 
     _pinValue = pinValue;   // init pin use for led
-    _lastTime = millis();   // keep track of time
     _ledState = false;      // keep track of state
 
-    // initialize led as output and state as off
-    pinMode(_pinValue, OUTPUT);
-    digitalWrite(_pinValue,_ledState);
+}
 
+// set single led as an output, set the initial state as HIGH or LOW
+void KT_LED::begin(bool state) {
+	_ledState = state;
+	pinMode(_pinValue, OUTPUT);
+	digitalWrite(_pinValue, _ledState);
+	_lastTime = millis();   // keep track of time
 }
 
 // Turn on led
