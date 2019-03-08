@@ -1,1 +1,4 @@
 **/VisualStudio/**
+
+# Ignore bash helper code
+*.sh
