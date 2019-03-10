@@ -27,9 +27,11 @@ class KT_LED{
         KT_LED(uint8_t pin, MODE_LED mode);
 		void begin(bool ledState);
 		void state(bool ledState);
+        void brightness(int value);
         void on(void);
         void off(void);
         void blink(int);
+        void breathe(float);
 
     // library-accessible "private" interface
     private:

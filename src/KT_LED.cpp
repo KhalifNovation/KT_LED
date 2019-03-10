@@ -3,7 +3,6 @@
  *
  * FadeOn - transition from off to max brightness
  * FadeOff - transition from max brightness to off
- * Breathe - like blink, but use pwm to make the effect of breathing
  * LowActive - invert on and off *added in KT_LEDv0.1*
  * Blink - change to add off and on duration parameter
  * add support for RGB LED
@@ -31,6 +30,11 @@ void KT_LED::begin(bool ledState) {
 //Set the led. state = true (On)
 void KT_LED::state(bool ledState) {
 	digitalWrite(_pinValue, ledState);
+}
+
+// Set the brightness of led, using pwm pin
+void KT_LED::brightness(int value){
+    analogWrite(_pinValue, value);
 }
 
 // Turn on led
@@ -71,7 +75,12 @@ void KT_LED::blink(int delayTime){
         _lastTime = currentTime;
         _ledState = !_ledState;
         
-        
     }
 
+}
+
+void KT_LED::breathe(float speed){
+
+    float val = (exp(sin(millis()/speed*PI)) - 0.36787944)*108.0;
+    brightness(val);
 }
