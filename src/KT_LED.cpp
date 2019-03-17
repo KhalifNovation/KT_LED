@@ -3,10 +3,8 @@
  *
  * FadeOn - transition from off to max brightness
  * FadeOff - transition from max brightness to off
- * LowActive - invert on and off *added in KT_LEDv0.1*
  * Blink - change to add off and on duration parameter
  * add support for RGB LED
- * state - state the led true or false (true = led on, false = led off) *added in KT_LEDv0.2*
  */
 
 #include "KT_LED.h"
