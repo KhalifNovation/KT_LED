@@ -27,6 +27,8 @@ class KT_LED{
         void blink(int);
         void blink(int, int);
         void breathe(float);
+        void fadeOn(float);
+        void fadeOff(float);
 
     // library-accessible "private" interface
     private:

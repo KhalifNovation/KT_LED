@@ -11,6 +11,7 @@
 
 // Constructor for single led
 KT_LED::KT_LED(uint8_t pinValue, MODE_LED mode){
+    Serial.begin(9600);
 	_mode = mode;
     _pinValue = pinValue;   // init pin use for led
     _ledState = false;      // keep track of state
@@ -115,4 +116,39 @@ void KT_LED::breathe(float speed){
     float val = (exp(sin(millis()/speed*PI)) - 0.36787944)*108.0;
     brightness(val);
 }
+
+void KT_LED::fadeOn(float delayTime){
+
+    // get current time
+    unsigned long currentTime = millis();
+
+    // check if it is below fade delay time
+    if(currentTime - _lastTime <= delayTime){
+
+        // map the time with pin pwm output
+        float val = map(currentTime - _lastTime, 0, delayTime, 0, 255);
+
+        brightness(val);
+       
+    }
+
+}
+
+void KT_LED::fadeOff(float delayTime){
+
+    // get current time
+    unsigned long currentTime = millis();
+
+    // check if it is below fade delay time
+    if(currentTime - _lastTime <= delayTime){
+
+        // map the time with pin pwm output
+        float val = map(currentTime - _lastTime, 0, delayTime, 0, 255);
+
+        brightness(255 - val);
+        
+    }
+
+}
+
 
