@@ -1,9 +1,3 @@
-/*
- *
- * Test.h - Test library
- *
- */
-
 // ensure this library description is only included once
 #ifndef KT_LED_h
 #define KT_LED_h
@@ -31,6 +25,7 @@ class KT_LED{
         void on(void);
         void off(void);
         void blink(int);
+        void blink(int, int);
         void breathe(float);
 
     // library-accessible "private" interface

@@ -27,6 +27,7 @@ void KT_LED::begin(bool ledState) {
 
 //Set the led. state = true (On)
 void KT_LED::state(bool ledState) {
+    _ledState = ledState;
 	digitalWrite(_pinValue, ledState);
 }
 
@@ -71,10 +72,42 @@ void KT_LED::blink(int delayTime){
     
         // keep track of time and state
         _lastTime = currentTime;
-        _ledState = !_ledState;
         
     }
 
+}
+
+// one more blink method, provided that user give delay for both on and off time. This method must be call frequently
+void KT_LED::blink(int onTime, int offTime){
+
+    // get current time
+    unsigned long currentTime = millis();
+
+    // check the current state
+    if(_ledState){
+        // led is turn on
+        // check if it is time to turn off the led
+        if(currentTime - _lastTime >= onTime){
+
+            // toggle the state of led
+            state(!_ledState);
+    
+            // keep track of time
+            _lastTime = currentTime;
+        }
+    }else{
+        // led is turn off
+        // check if it is time to turn on the led
+        if(currentTime - _lastTime >= offTime){
+
+            // toggle the state of led
+            state(!_ledState);
+    
+            // keep track of time
+            _lastTime = currentTime;
+        
+        }
+    }
 }
 
 void KT_LED::breathe(float speed){
@@ -82,3 +115,4 @@ void KT_LED::breathe(float speed){
     float val = (exp(sin(millis()/speed*PI)) - 0.36787944)*108.0;
     brightness(val);
 }
+
